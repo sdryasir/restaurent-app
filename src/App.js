@@ -56,9 +56,9 @@ function App() {
         <Route path='/RestaurentSearch'>
           <RestaurentSearch />
         </Route>
-        <Route path='/RestaurentUpdate'>
-          <RestaurentUpdate />
-        </Route>
+        <Route
+          path='/RestaurentUpdate/:id'
+          render={props => <RestaurentUpdate {...props} />}></Route>
       </Router>
     </div>
   );

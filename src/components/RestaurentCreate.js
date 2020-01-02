@@ -6,7 +6,17 @@ class RestaurentCreate extends Component {
     this.state = { reg_no: '', student_name: '', father_name: '', dob: '' };
   }
   createRecord = () => {
-    console.warn(this.state);
+    fetch('http://localhost:3000/restaurent', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    }).then(result => {
+      result.json().then(res => {
+        console.warn(res);
+      });
+    });
   };
   render() {
     return (

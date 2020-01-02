@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class RestaurentList extends Component {
   constructor() {
@@ -38,6 +39,9 @@ class RestaurentList extends Component {
                     <td>{item.student_name}</td>
                     <td>{item.father_name}</td>
                     <td>{item.dob}</td>
+                    <td>
+                      <Link to={'/RestaurentUpdate/' + item.id}>Edit</Link>
+                    </td>
                   </tr>
                 ))
               ) : (
