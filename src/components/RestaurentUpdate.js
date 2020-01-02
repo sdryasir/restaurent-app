@@ -19,8 +19,21 @@ class RestaurentUpdate extends Component {
       });
     });
   }
+  updateRecord = () => {
+    fetch('http://localhost:3000/restaurent/' + this.props.match.params.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    }).then(result => {
+      result.json().then(res => {
+        alert('updated');
+      });
+    });
+  };
   render() {
-    console.warn(this.props.match.params.id);
+    //console.warn(this.props.match.params.id);
     return (
       <div>
         <h1>Update Restaurent</h1>
