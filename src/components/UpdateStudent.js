@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 
-class RestaurentUpdate extends Component {
+class UpdateStudent extends Component {
   constructor(props) {
     super(props);
     this.state = { reg_no: '', student_name: '', father_name: '', dob: '' };
   }
   componentDidMount() {
-    fetch(
-      'http://localhost:3000/restaurent/' + this.props.match.params.id
-    ).then(response => {
-      response.json().then(result => {
-        this.setState({
-          reg_no: result.reg_no,
-          student_name: result.student_name,
-          father_name: result.father_name,
-          dob: result.dob
+    fetch('http://localhost:3000/students/' + this.props.match.params.id).then(
+      response => {
+        response.json().then(result => {
+          this.setState({
+            reg_no: result.reg_no,
+            student_name: result.student_name,
+            father_name: result.father_name,
+            dob: result.dob
+          });
         });
-      });
-    });
+      }
+    );
   }
   updateRecord = () => {
-    fetch('http://localhost:3000/restaurent/' + this.props.match.params.id, {
+    fetch('http://localhost:3000/students/' + this.props.match.params.id, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ class RestaurentUpdate extends Component {
     //console.warn(this.props.match.params.id);
     return (
       <div>
-        <h1>Update Restaurent</h1>
+        <h3>Update Student</h3>
         <div>
           <input
             type='text'
@@ -85,4 +85,4 @@ class RestaurentUpdate extends Component {
     );
   }
 }
-export default RestaurentUpdate;
+export default UpdateStudent;

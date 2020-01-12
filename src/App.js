@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import Home from './components/Home';
-import RestaurentCreate from './components/RestaurentCreate';
-import RestaurentList from './components/RestaurentList';
+import CreateStudent from './components/CreateStudent';
+import StudentList from './components/StudentList';
 import RestaurentSearch from './components/RestaurentSearch';
-import RestaurentUpdate from './components/RestaurentUpdate';
+import UpdateStudent from './components/UpdateStudent';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Button, Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,16 +22,10 @@ function App() {
                 <Link to='/'>Home</Link>
               </Nav.Link>
               <Nav.Link href='#'>
-                <Link to='/RestaurentCreate'>Create Restaurent</Link>
-              </Nav.Link>
-              <Nav.Link href='#'>
-                <Link to='/RestaurentList'>Restaurent List</Link>
+                <Link to='/StudentList'>All Students</Link>
               </Nav.Link>
               <Nav.Link href='#'>
                 <Link to='/RestaurentSearch'>Search Restaurent</Link>
-              </Nav.Link>
-              <Nav.Link href='#'>
-                <Link to='/RestaurentUpdate'>Update Restaurent</Link>
               </Nav.Link>
             </Nav>
             <Form inline>
@@ -47,18 +41,18 @@ function App() {
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route exact path='/RestaurentList'>
-          <RestaurentList />
+        <Route exact path='/StudentList'>
+          <StudentList />
         </Route>
-        <Route path='/RestaurentCreate'>
-          <RestaurentCreate />
+        <Route path='/CreateStudent'>
+          <CreateStudent />
         </Route>
         <Route path='/RestaurentSearch'>
           <RestaurentSearch />
         </Route>
         <Route
-          path='/RestaurentUpdate/:id'
-          render={props => <RestaurentUpdate {...props} />}></Route>
+          path='/UpdateStudent/:id'
+          render={props => <UpdateStudent {...props} />}></Route>
       </Router>
     </div>
   );

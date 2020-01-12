@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Table, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
-class RestaurentList extends Component {
+class StudentList extends Component {
   constructor() {
     super();
     this.state = {
@@ -12,7 +12,7 @@ class RestaurentList extends Component {
     };
   }
   componentDidMount() {
-    fetch('http://localhost:3000/restaurent').then(response => {
+    fetch('http://localhost:3000/students').then(response => {
       response.json().then(result => {
         this.setState({ list: result });
       });
@@ -22,8 +22,12 @@ class RestaurentList extends Component {
     console.warn(this.state.list);
     return (
       <div>
-        <h1>Show All Restaurents</h1>
+        <br />
         <Container>
+          <h3>Show All Students</h3>
+          <Link to={'/CreateStudent'}>
+            <FontAwesomeIcon icon={faUserPlus} /> Add New
+          </Link>
           <Table striped bordered hover variant='dark'>
             <thead>
               <tr>
@@ -42,7 +46,7 @@ class RestaurentList extends Component {
                     <td>{item.father_name}</td>
                     <td>{item.dob}</td>
                     <td>
-                      <Link to={'/RestaurentUpdate/' + item.id}>
+                      <Link to={'/UpdateStudent/' + item.id}>
                         <FontAwesomeIcon icon={faEdit} />
                       </Link>{' '}
                       |{' '}
@@ -64,4 +68,4 @@ class RestaurentList extends Component {
     );
   }
 }
-export default RestaurentList;
+export default StudentList;
